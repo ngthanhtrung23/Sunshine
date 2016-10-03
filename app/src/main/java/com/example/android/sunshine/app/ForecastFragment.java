@@ -1,10 +1,12 @@
 package com.example.android.sunshine.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.Time;
 import android.util.Log;
@@ -51,15 +53,26 @@ public class ForecastFragment extends Fragment {
         inflater.inflate(R.menu.forecastfragment, menu);
     }
 
+    private void updateWeather() {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
+        new FetchWeatherTask().execute(settings.getString("location", "Singapore"));
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_refresh:
-                new FetchWeatherTask().execute("Singapore");
+                updateWeather();
                 return true;
             default:
                 return false;
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateWeather();
     }
 
     @Override
@@ -114,6 +127,7 @@ public class ForecastFragment extends Fragment {
             if (params.length == 0) {
                 return null;
             }
+            Log.v(LOG_TAG, "Location: " + params[0]);
 
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
