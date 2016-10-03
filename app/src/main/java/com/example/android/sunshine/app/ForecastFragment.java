@@ -19,7 +19,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,7 +54,9 @@ public class ForecastFragment extends Fragment {
 
     private void updateWeather() {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
-        new FetchWeatherTask().execute(settings.getString("location", "Singapore"));
+        String location = getResources().getString(R.string.pref_location_key);
+        String default_location = getResources().getString(R.string.pref_location_default_value);
+        new FetchWeatherTask().execute(settings.getString(location, default_location));
     }
 
     @Override

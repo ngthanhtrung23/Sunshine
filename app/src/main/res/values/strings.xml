@@ -78,5 +78,6 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="pref_location_title">Location</string>
     <string name="pref_location_default_value">Singapore</string>
+    <string name="pref_location_key">location</string>
 
 </resources>

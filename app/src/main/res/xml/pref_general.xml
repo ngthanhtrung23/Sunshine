@@ -4,7 +4,7 @@
         android:capitalize="words"
         android:defaultValue="@string/pref_location_default_value"
         android:inputType="textCapWords"
-        android:key="location"
+        android:key="@string/pref_location_key"
         android:maxLines="1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
