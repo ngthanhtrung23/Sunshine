@@ -9,4 +9,12 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/pref_location_title" />
+
+    <ListPreference
+        android:title="@string/pref_unit_title"
+        android:key="@string/pref_unit_key"
+        android:defaultValue="@string/pref_unit_default_value"
+        android:entryValues="@array/pref_unit_values"
+        android:entries="@array/pref_unit_display_text"
+        />
 </PreferenceScreen>

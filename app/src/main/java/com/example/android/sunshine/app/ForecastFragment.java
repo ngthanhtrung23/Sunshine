@@ -207,7 +207,16 @@ public class ForecastFragment extends Fragment {
      * Prepare the weather high/lows for presentation.
      */
     private String formatHighLows(double high, double low) {
-        // For presentation, assume the user doesn't care about tenths of a degree.
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String unit = pref.getString(
+                getString(R.string.pref_unit_key),
+                getString(R.string.pref_unit_default_value));
+
+        if (unit.equals("fahrenheit")) {
+            high = high * 1.8 + 32;
+            low = low * 1.8 + 32;
+        }
+
         long roundedHigh = Math.round(high);
         long roundedLow = Math.round(low);
 

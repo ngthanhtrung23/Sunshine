@@ -79,5 +79,8 @@
     <string name="pref_location_title">Location</string>
     <string name="pref_location_default_value">Singapore</string>
     <string name="pref_location_key">location</string>
+    <string name="pref_unit_title">Unit</string>
+    <string name="pref_unit_key">unit</string>
+    <string name="pref_unit_default_value">celcius</string>
 
 </resources>
